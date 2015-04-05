@@ -89,5 +89,56 @@
             </form>
         </div>
     </div>
+    <div class="col-md-3">
+        <p>
+            <b>Labels</b>
+            <a href="#">
+                <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+            </a><br/>
+            <c:choose>
+                <c:when test="${requestScope.labels.size() == 0}">
+                    <span class="text-muted">No label</span>
+                </c:when>
+                <c:otherwise>
+                    <c:forEach var="label" items="${requestScope.labels}">
+                        <span>${label.labelName}</span><br/>
+                    </c:forEach>
+                </c:otherwise>
+            </c:choose>
+        </p>
+        <hr/>
+        <p>
+            <b>Milestone</b>
+            <a href="#">
+                <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+            </a><br/>
+            <c:choose>
+                <c:when test="${requestScope.milestone == null}">
+                    <span class="text-muted">No milestone</span>
+                </c:when>
+                <c:otherwise>
+                    <span class="glyphicon glyphicon-bookmark" aria-hidden="true"></span>
+                    <a href="#">${requestScope.milestone.name}</a>
+                </c:otherwise>
+            </c:choose>
+        </p>
+        <hr/>
+        <p>
+            <b>Assignee</b>
+            <a href="#">
+                <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+            </a><br/>
+            <c:choose>
+                <c:when test="${requestScope.assignee == null}">
+                    <span class="text-muted">No assignee</span>
+                </c:when>
+                <c:otherwise>
+                    <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                    ${requestScope.assignee.username}
+                </c:otherwise>
+            </c:choose>
+
+        </p>
+    </div>
 </div>
 <%@include file="../shared/footer.jsp"%>

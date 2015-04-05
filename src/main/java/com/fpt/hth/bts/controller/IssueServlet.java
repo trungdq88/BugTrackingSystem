@@ -1,14 +1,9 @@
 package com.fpt.hth.bts.controller;
 
-import com.fpt.hth.bts.dao.CommentDAO;
-import com.fpt.hth.bts.dao.IssueDAO;
-import com.fpt.hth.bts.dao.UserDAO;
-import com.fpt.hth.bts.entity.Comment;
-import com.fpt.hth.bts.entity.Issue;
-import com.fpt.hth.bts.entity.User;
+import com.fpt.hth.bts.dao.*;
+import com.fpt.hth.bts.entity.*;
 import com.fpt.hth.bts.utils.BTSConstants;
 import com.fpt.hth.bts.utils.DummyVal;
-import sun.rmi.rmic.Constants;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -16,7 +11,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -64,29 +58,56 @@ public class IssueServlet extends HttpServlet {
         }
         if (action.equals("view")) {
             String idStr = request.getParameter("id");
-            int id = 0;
+            int issueId = 0;
             if (idStr != null) {
                 try {
-                    id = Integer.parseInt(idStr);
+                    issueId = Integer.parseInt(idStr);
                 } catch (NumberFormatException e) {
                     e.printStackTrace();
                 }
             }
             IssueDAO issueDAO = new IssueDAO();
             Issue issue;
-            if (id != 0 && (issue = issueDAO.read(id)) != null) {
+            if (issueId != 0 && (issue = issueDAO.read(issueId)) != null) {
+
+                // DAOs
+                CommentDAO commentDAO = new CommentDAO();
+                UserDAO userDAO = new UserDAO();
+                AssignmentDAO assignmentDAO = new AssignmentDAO();
+                MilestoneDAO milestoneDAO = new MilestoneDAO();
+                LabelDAO labelDAO = new LabelDAO();
+                LabelIssueDAO labelIssueDAO = new LabelIssueDAO();
 
                 // Get user
-                UserDAO userDAO = new UserDAO();
                 User creator = userDAO.read(issue.getCreatorId());
 
                 // Get comments
-                CommentDAO commentDAO = new CommentDAO();
-                List comments = commentDAO.getAllByIssue(issue.getId());
+                List comments = commentDAO.getAllByIssue(issueId);
+
+                // Get labels
+                List labels = labelIssueDAO.getAllByIssueId(issueId);
+
+                // Get milestone
+                Milestone milestone = null;
+                if (issue.getMilestoneId() > 0) {
+                    milestone = milestoneDAO.read(issue.getMilestoneId());
+                }
+
+
+                // Get assignee
+                Assignment assignment = assignmentDAO.getLatestAssignment(issueId);
+                User assignee = null;
+                if (assignment != null) {
+                    assignee = userDAO.read(assignment.getAssigneeId());
+                }
+
 
                 request.setAttribute("issue", issue);
                 request.setAttribute("creator", creator);
                 request.setAttribute("comments", comments);
+                request.setAttribute("assignee", assignee);
+                request.setAttribute("milestone", milestone);
+                request.setAttribute("labels", labels);
 
                 request.getRequestDispatcher("WEB-INF/issue/view.jsp").forward(request, response);
             } else {
