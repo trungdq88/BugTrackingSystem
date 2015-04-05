@@ -34,6 +34,8 @@
     <link href="assets/css/style.css" rel="stylesheet">
 
     <script src="assets/js/ckeditor.js"></script>
+    <script src="assets/js/randomColor.js"></script>
+    <script src="assets/js/plugins.js"></script>
 </head>
 
 <body>
