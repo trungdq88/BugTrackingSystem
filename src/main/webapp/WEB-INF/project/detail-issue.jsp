@@ -22,11 +22,10 @@
                     </div>
                 </div>
 
-                <div class="col-sm-1">
+                <div class="col-sm-2 text-right">
                     <a href="${pageContext.request.contextPath}/issue?action=create" class="btn btn-success">New issue</a>
                 </div>
             </div> 
-
             <div class="panel panel-default">
                 <!-- Default panel contents -->
                 <div class="panel-heading">

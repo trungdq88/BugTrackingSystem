@@ -5,6 +5,21 @@
             <h1 class="page-header">Demo</h1>
             <div class="row" style="margin-bottom: 20px;">
                 <%@include file="shared/menu.jsp"%>
+
+                <div class="col-sm-6 text-right">
+                    <button onclick="toggleCreateLabel()" class="btn btn-success">New label</button>
+                </div>
+            </div>
+            <div id="create-label" class="hidden">
+                <form>
+                    <input type="text" placeholder="New label name..." class="col-sm-5 input-text"/>
+                    <input type="text" class="col-sm-1 input-text"/>
+                    <div class="col-sm-3" style="float: right;">
+                        <button type="button" onclick="toggleCreateLabel()" class="btn btn-default">Cancel</button>
+                        <button type="submit" class="btn btn-success">Create label</button>
+                    </div>
+                    <div style="clear: both;"></div>
+                </form>
             </div>
 
             <div class="panel panel-default">
@@ -38,8 +53,8 @@
                                 1 open issues
                             </div>
                             <div class="col-sm-2">
-                                <a href="#"><span><i class="fa fa-edit"></i>Edit</span></a>
-                                <a href="#"><span><i class="fa fa-remove"></i>Delete</span></a>
+                                <a href="#"><span><i class="fa fa-edit"></i> Edit</span></a>
+                                <a href="#"><span><i class="fa fa-remove"></i> Delete</span></a>
                             </div>
                         </div>
                     </li>
@@ -52,8 +67,8 @@
                                 2 open issues
                             </div>
                             <div class="col-sm-2">
-                                <a href="#"><span><i class="fa fa-edit"></i>Edit</span></a>
-                                <a href="#"><span><i class="fa fa-remove"></i>Delete</span></a>
+                                <a href="#"><span><i class="fa fa-edit"></i> Edit</span></a>
+                                <a href="#"><span><i class="fa fa-remove"></i> Delete</span></a>
                             </div>
                         </div>
                     </li>
@@ -66,8 +81,8 @@
                                 0 open issues
                             </div>
                             <div class="col-sm-2">
-                                <a href="#"><span><i class="fa fa-edit"></i>Edit</span></a>
-                                <a href="#"><span><i class="fa fa-remove"></i>Delete</span></a>
+                                <a href="#"><span><i class="fa fa-edit"></i> Edit</span></a>
+                                <a href="#"><span><i class="fa fa-remove"></i> Delete</span></a>
                             </div>
                         </div>
                     </li>
