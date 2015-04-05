@@ -6,9 +6,11 @@
 package com.fpt.hth.bts.controller;
 
 import com.fpt.hth.bts.dao.IssueDAO;
+import com.fpt.hth.bts.dao.ProjectDAO;
 import com.fpt.hth.bts.entity.Issue;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -33,10 +35,10 @@ public class HomeServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        IssueDAO dao = new IssueDAO();
-        Issue issue = dao.read(1);
-        request.setAttribute("name", issue.getName());
+
+        ProjectDAO projectDAO = new ProjectDAO();
+        List projects = projectDAO.getAll();
+        request.setAttribute("projects", projects);
         request.getRequestDispatcher("WEB-INF/home.jsp").forward(request, response);
     }
 

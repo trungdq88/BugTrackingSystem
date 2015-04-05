@@ -125,7 +125,12 @@ public class Project implements Serializable {
 
     @Override
     public String toString() {
-        return "com.fpt.hth.bts.entity.Project[ id=" + id + " ]";
+        return "Project{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", code='" + code + '\'' +
+                ", startDate=" + startDate +
+                ", description='" + description + '\'' +
+                '}';
     }
-    
 }

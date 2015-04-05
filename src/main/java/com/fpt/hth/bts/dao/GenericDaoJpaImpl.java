@@ -7,9 +7,11 @@ package com.fpt.hth.bts.dao;
 
 import java.io.Serializable;
 import java.lang.reflect.ParameterizedType;
+import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.Query;
 
 /**
  *
@@ -25,7 +27,6 @@ public class GenericDaoJpaImpl<T, PK extends Serializable>
     EntityManagerFactory factory = 
             Persistence.createEntityManagerFactory("com.fpt.hth_BTS_war_1.0-SNAPSHOTPU");
 
-    EntityManager manager = factory.createEntityManager();
     public GenericDaoJpaImpl() {
         ParameterizedType genericSuperclass = (ParameterizedType) getClass()
                 .getGenericSuperclass();
@@ -35,23 +36,35 @@ public class GenericDaoJpaImpl<T, PK extends Serializable>
 
     @Override
     public T create(T t) {
+        EntityManager manager = factory.createEntityManager();
+        manager.getTransaction().begin();
         manager.persist(t);
+        manager.getTransaction().commit();
+        manager.close();
         return t;
     }
 
     @Override
     public T read(PK id) {
+        EntityManager manager = factory.createEntityManager();
         return manager.find(entityClass, id);
     }
 
     @Override
     public T update(T t) {
-        return manager.merge(t);
+        EntityManager manager = factory.createEntityManager();
+        manager.getTransaction().begin();
+        T result = manager.merge(t);
+        manager.getTransaction().commit();
+        manager.close();
+        return result;
     }
 
     @Override
     public void delete(T t) {
+        EntityManager manager = factory.createEntityManager();
         t = manager.merge(t);
         manager.remove(t);
+        manager.close();
     }
 }
