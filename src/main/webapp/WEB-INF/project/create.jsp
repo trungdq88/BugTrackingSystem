@@ -1,5 +1,5 @@
 <%@include file="../shared/header.jsp" %>
-
+<%@include file="../shared/sidebar.jsp" %>
 <div class="container-fluid">
     <div class="row">
         <form action="" method="post">

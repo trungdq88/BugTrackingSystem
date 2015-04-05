@@ -6,6 +6,7 @@
 package com.fpt.hth.bts.entity;
 
 import java.io.Serializable;
+import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -16,6 +17,8 @@ import javax.persistence.Lob;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -31,6 +34,8 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Issue.findById", query = "SELECT i FROM Issue i WHERE i.id = :id"),
     @NamedQuery(name = "Issue.findByName", query = "SELECT i FROM Issue i WHERE i.name = :name"),
     @NamedQuery(name = "Issue.findByStatus", query = "SELECT i FROM Issue i WHERE i.status = :status"),
+    @NamedQuery(name = "Issue.findByCreateDate", query = "SELECT i FROM Issue i WHERE i.createDate = :createDate"),
+    @NamedQuery(name = "Issue.findByCreatorId", query = "SELECT i FROM Issue i WHERE i.creatorId = :creatorId"),
     @NamedQuery(name = "Issue.findByProjectId", query = "SELECT i FROM Issue i WHERE i.projectId = :projectId"),
     @NamedQuery(name = "Issue.findByMilestoneId", query = "SELECT i FROM Issue i WHERE i.milestoneId = :milestoneId")})
 public class Issue implements Serializable {
@@ -49,6 +54,11 @@ public class Issue implements Serializable {
     private String content;
     @Column(name = "status")
     private Integer status;
+    @Column(name = "create_date")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date createDate;
+    @Column(name = "creator_id")
+    private Integer creatorId;
     @Column(name = "project_id")
     private Integer projectId;
     @Column(name = "milestone_id")
@@ -91,6 +101,22 @@ public class Issue implements Serializable {
 
     public void setStatus(Integer status) {
         this.status = status;
+    }
+
+    public Date getCreateDate() {
+        return createDate;
+    }
+
+    public void setCreateDate(Date createDate) {
+        this.createDate = createDate;
+    }
+
+    public Integer getCreatorId() {
+        return creatorId;
+    }
+
+    public void setCreatorId(Integer creatorId) {
+        this.creatorId = creatorId;
     }
 
     public Integer getProjectId() {

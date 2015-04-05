@@ -15,6 +15,7 @@ import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -30,6 +31,12 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "LabelIssue.findByLabelId", query = "SELECT l FROM LabelIssue l WHERE l.labelId = :labelId"),
     @NamedQuery(name = "LabelIssue.findByIssueId", query = "SELECT l FROM LabelIssue l WHERE l.issueId = :issueId")})
 public class LabelIssue implements Serializable {
+    @Size(max = 45)
+    @Column(name = "label_name")
+    private String labelName;
+    @Size(max = 45)
+    @Column(name = "label_color")
+    private String labelColor;
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -95,6 +102,22 @@ public class LabelIssue implements Serializable {
     @Override
     public String toString() {
         return "com.fpt.hth.bts.entity.LabelIssue[ id=" + id + " ]";
+    }
+
+    public String getLabelName() {
+        return labelName;
+    }
+
+    public void setLabelName(String labelName) {
+        this.labelName = labelName;
+    }
+
+    public String getLabelColor() {
+        return labelColor;
+    }
+
+    public void setLabelColor(String labelColor) {
+        this.labelColor = labelColor;
     }
     
 }
