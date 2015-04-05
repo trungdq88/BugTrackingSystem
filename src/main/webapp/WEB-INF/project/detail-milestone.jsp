@@ -4,21 +4,25 @@
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main table-responsive">
             <h1 class="page-header">Demo</h1>
             <div class="row" style="margin-bottom: 20px;">
-                <div class="btn-group col-sm-6" role="group" aria-label="Basic example">
-                    <a href="project?action=view" class="btn btn-default">Issues</a>
-                    <a href="project?action=label"  class="btn btn-default">Labels</a>
-                    <a href="project?action=milestone"  class="btn btn-primary">Milestones</a>
-                </div>
-            </div> 
+                <%@include file="shared/menu.jsp"%>
+            </div>
 
             <div class="panel panel-default">
                 <!-- Default panel contents -->
                 <div class="panel-heading">
-                    <div class="col-sm-3" style="font-size: 13pt;">
-                        <a href="#"><span><i class="fa fa-exclamation-circle"></i>2 Open</span></a>
-                        <a href="#"><span><i class="fa fa-check"></i>7 Closed</span></a>
-                    </div>
-                    <div class="col-sm-offset-11">
+                    <span style="margin-top: 5px; display: inline-block">
+                        <a href="#">
+                            <b>
+                                <i class="fa fa-exclamation-circle"></i> 2 Open
+                            </b>
+                        </a>
+                        <a href="#">
+                            <span class="text-muted">
+                                <i class="fa fa-check"></i> 7 Closed
+                            </span>
+                        </a>
+                    </span>
+                    <div class="pull-right">
                         <div class="btn-group">
                             <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Sort <span class="caret"></span></button>
                             <ul class="dropdown-menu" role="menu">
@@ -30,6 +34,7 @@
                             </ul>
                         </div>
                     </div>
+                    <div class="clearfix"></div>
                 </div>
                 <ul class="list-group">
                     <li class="list-group-item">
@@ -37,10 +42,8 @@
                             <div class="col-sm-6">
                                 <a href="#" class="issue-title">Demo</a>
                                 <div>
-                                    <span>
                                         <strong>Closed</strong>
-                                        14 hours ago 
-                                    </span>
+                                        14 hours ago
                                     <span>
                                         <i class="fa fa-clock-o"></i> 
                                         last updated about 14 hours ago
@@ -74,10 +77,8 @@
                             <div class="col-sm-6">
                                 <a href="#" class="issue-title">Demo</a>
                                 <div>
-                                    <span>
                                         <strong>Closed</strong>
-                                        14 hours ago 
-                                    </span>
+                                        14 hours ago
                                     <span>
                                         <i class="fa fa-clock-o"></i> 
                                         last updated about 14 hours ago

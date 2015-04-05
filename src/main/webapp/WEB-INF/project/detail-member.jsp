@@ -11,7 +11,7 @@
                 <!-- Default panel contents -->
                 <div class="panel-heading">
                     <span style="margin-top: 5px; display: inline-block">
-                        <b>3 labels</b>
+                        <b>3 members</b>
                     </span>
                     <div class="pull-right">
                         <div class="btn-group">
@@ -31,11 +31,11 @@
                     <li class="list-group-item">
                         <div class="row">
                             <div class="col-sm-8">
-                                <span class="label label-big" style="background-color: red;">
-                                    Bug</span>
+                                <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                                trungdq88
                             </div>
                             <div class="col-sm-2" style="text-align: right;">
-                                1 open issues
+                                Developer
                             </div>
                             <div class="col-sm-2">
                                 <a href="#"><span><i class="fa fa-edit"></i>Edit</span></a>
@@ -46,10 +46,11 @@
                     <li class="list-group-item">
                         <div class="row">
                             <div class="col-sm-8">
-                                <span class="label label-big" style="background-color: #139ff7;"></i>Mobile</span>
+                                <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                                hainnt
                             </div>
                             <div class="col-sm-2" style="text-align: right;">
-                                2 open issues
+                                Tester
                             </div>
                             <div class="col-sm-2">
                                 <a href="#"><span><i class="fa fa-edit"></i>Edit</span></a>
@@ -60,10 +61,11 @@
                     <li class="list-group-item">
                         <div class="row">
                             <div class="col-sm-8">
-                                <span class="label label-big" style="background-color: violet;"></i>Web Service</span>
+                                <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                                hoappt
                             </div>
                             <div class="col-sm-2" style="text-align: right;">
-                                0 open issues
+                                Project Manager
                             </div>
                             <div class="col-sm-2">
                                 <a href="#"><span><i class="fa fa-edit"></i>Edit</span></a>

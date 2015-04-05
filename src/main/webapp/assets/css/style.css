@@ -10,7 +10,7 @@ and open the template in the editor.
 */
 
 .issue-title {
-    font-size: 17pt;
+    font-size: 18px;
 }
 
 .progress-small {
@@ -33,9 +33,13 @@ and open the template in the editor.
 }
 
 .issue-status {
-    width: 3%; 
     float: left;
     text-align: center;
+    background-color: rgb(92, 184, 92);
+    color: #fff;
+    border-radius: 15px;
+    padding: 0 7px;
+    margin: 4px 7px;
 }
 
 .issue-main {

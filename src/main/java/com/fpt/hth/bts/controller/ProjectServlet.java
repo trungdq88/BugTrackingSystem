@@ -64,6 +64,8 @@ public class ProjectServlet extends HttpServlet {
             request.getRequestDispatcher("WEB-INF/project/detail-label.jsp").forward(request, response);
         } else if (action.equals("milestone")) {
             request.getRequestDispatcher("WEB-INF/project/detail-milestone.jsp").forward(request, response);
+        } else if (action.equals("member")) {
+            request.getRequestDispatcher("WEB-INF/project/detail-member.jsp").forward(request, response);
         } else {
             request.getRequestDispatcher("WEB-INF/error/404.jsp").forward(request, response);
         }

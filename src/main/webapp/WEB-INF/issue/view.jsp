@@ -3,7 +3,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@include file="../shared/header.jsp"%>
-<%@include file="../shared/sidebar.jsp" %>
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2">
     <div class=" col-md-12">
         <h1 class="page-header">

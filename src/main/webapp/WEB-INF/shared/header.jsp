@@ -65,3 +65,5 @@
 
 <div class="container-fluid">
     <div class="row">
+
+<%@include file="../shared/sidebar.jsp" %>
