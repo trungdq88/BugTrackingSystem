@@ -1,7 +1,7 @@
 <div class="col-sm-3 col-md-2 sidebar">
     <ul class="nav nav-sidebar">
-        <li><a href="/BTS">Overview</a></li>
-        <li><a href="/BTS/project?action=create">Create new project</a></li>
+        <li><a href="${pageContext.request.contextPath}">Overview</a></li>
+        <li><a href="${pageContext.request.contextPath}/project?action=create">Create new project</a></li>
         <li><a href="#">Analytics</a></li>
         <li><a href="#">Export</a></li>
     </ul>

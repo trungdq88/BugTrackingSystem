@@ -6,7 +6,9 @@ import com.fpt.hth.bts.dao.UserDAO;
 import com.fpt.hth.bts.entity.Comment;
 import com.fpt.hth.bts.entity.Issue;
 import com.fpt.hth.bts.entity.User;
+import com.fpt.hth.bts.utils.BTSConstants;
 import com.fpt.hth.bts.utils.DummyVal;
+import sun.rmi.rmic.Constants;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -34,7 +36,7 @@ public class IssueServlet extends HttpServlet {
             int issueId = Integer.parseInt(request.getParameter("issue-id"));
 
             if (commentStr == null || commentStr.isEmpty()) {
-                response.sendRedirect("/BTS/issue?action=view&id=" + issueId);
+                response.sendRedirect(request.getContextPath() + "/issue?action=view&id=" + issueId);
                 return;
             }
 
@@ -42,11 +44,15 @@ public class IssueServlet extends HttpServlet {
             comment.setCommentContent(commentStr);
             comment.setCreatedDate(new Date());
             comment.setIssueId(issueId);
-            comment.setUserId(DummyVal.loggedInUserId);
+
+            UserDAO userDAO = new UserDAO();
+            User loggedUser = userDAO.read(DummyVal.loggedInUserId);
+            comment.setUserId(loggedUser.getId());
+            comment.setUsername(loggedUser.getUsername());
 
             CommentDAO commentDAO = new CommentDAO();
             commentDAO.create(comment);
-            response.sendRedirect("/BTS/issue?action=view&id=" + issueId);
+            response.sendRedirect(request.getContextPath() + "/issue?action=view&id=" + issueId);
         }
     }
 
@@ -86,6 +92,28 @@ public class IssueServlet extends HttpServlet {
             } else {
                 request.getRequestDispatcher("WEB-INF/error/404.jsp").forward(request, response);
             }
+        } else if (action.equals("close") || action.equals("reopen")) {
+
+            String idStr = request.getParameter("id");
+            int issueId = 0;
+            if (idStr != null) {
+                try {
+                    issueId = Integer.parseInt(idStr);
+                } catch (NumberFormatException e) {
+                    e.printStackTrace();
+                }
+            }
+            IssueDAO issueDAO = new IssueDAO();
+            Issue issue;
+            if (issueId != 0 && (issue = issueDAO.read(issueId)) != null) {
+                issue.setStatus(
+                        action.equals("reopen") ?
+                                BTSConstants.ISSUE_OPEN_STATUS :
+                                BTSConstants.ISSUE_CLOSE_STATUS);
+                issueDAO.update(issue);
+            }
+
+            response.sendRedirect(request.getContextPath() + "/issue?action=view&id=" + issueId);
         } else {
             request.getRequestDispatcher("WEB-INF/error/404.jsp").forward(request, response);
         }

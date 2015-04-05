@@ -29,7 +29,7 @@
 
           <h2 class="sub-header">
               Projects
-              <a class="btn-primary btn pull-right" href="/BTS/project?action=create">Create new project</a>
+              <a class="btn-primary btn pull-right" href="${pageContext.request.contextPath}/project?action=create">Create new project</a>
           </h2>
           <div class="table-responsive">
             <table class="table table-striped">

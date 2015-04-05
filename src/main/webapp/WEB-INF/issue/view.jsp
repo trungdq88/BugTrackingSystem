@@ -22,6 +22,22 @@
             <span class="text-muted"><b>${requestScope.creator.username}</b> opened this issue on
             <fmt:formatDate  type="both" dateStyle="medium" timeStyle="medium"
                              value="${requestScope.issue.createDate}" /> · ${requestScope.comments.size()} comments</span>
+
+            <span class="pull-right">
+
+            <c:choose>
+                <c:when test="${requestScope.issue.status == 0}">
+                    <a href="${pageContext.request.contextPath}/issue?action=close&id=${requestScope.issue.id}" class="btn btn-primary">
+                        Close issue
+                    </a>
+                </c:when>
+                <c:otherwise>
+                    <a href="${pageContext.request.contextPath}/issue?action=reopen&id=${requestScope.issue.id}" class="btn btn-success">
+                        Reopen issue
+                    </a>
+                </c:otherwise>
+            </c:choose>
+            </span>
         </p>
     </div>
     <div class="col-md-9">
@@ -30,9 +46,13 @@
                 <div class="panel-heading">
 
                     <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
-                    <b>${requestScope.creator.username}</b> commented on
+                    <b>${requestScope.creator.username}</b>
+                    <span class="text-muted">
+                        commented on
                     <fmt:formatDate  type="both" dateStyle="medium" timeStyle="medium"
-                                     value="${requestScope.issue.createDate}" /></div>
+                                     value="${requestScope.issue.createDate}" />
+                    </span>
+                </div>
                 <div class="panel-body">
                     ${requestScope.issue.content}
                 </div>
@@ -43,9 +63,12 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
-                        <b>${comment.userId}</b> commented on
+                        <b>${comment.username}</b>
+                        <span class="text-muted">commented on
                         <fmt:formatDate  type="both" dateStyle="medium" timeStyle="medium"
-                                         value="${comment.createdDate}" /></div>
+                                         value="${comment.createdDate}" />
+                        </span>
+                    </div>
                     <div class="panel-body">
                             ${comment.commentContent}
                     </div>
@@ -53,7 +76,7 @@
             </c:forEach>
         </div>
         <div id="issue-comment">
-            <form action="/BTS/issue" method="post">
+            <form action="${pageContext.request.contextPath}/issue" method="post">
                 <b><label for="issue-comment-box">Your comment:</label></b>
                 <p>
                     <textarea id="issue-comment-box" class="ckeditor" name="issue-comment" required></textarea>
