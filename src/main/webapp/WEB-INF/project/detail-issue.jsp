@@ -1,4 +1,5 @@
 <%@include file="../shared/header.jsp" %>
+<%@include file="../shared/sidebar.jsp" %>
 <div class="container-fluid">
     <div class="row">
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main table-responsive">
@@ -30,7 +31,6 @@
                     <button class="btn btn-success">New issue</button>
                 </div>
             </div> 
-
             <div class="panel panel-default">
                 <!-- Default panel contents -->
                 <div class="panel-heading">
@@ -94,7 +94,9 @@
                 <ul class="list-group">
                     <li class="list-group-item">
                         <div class="issue-item row">
-                            <div class="issue-status"><i class="fa fa-exclamation-circle"></i></div>
+                            <div class="issue-status">
+                                <i class="fa fa-exclamation-circle"></i>
+                            </div>
                             <div class="issue-main">
                                 <a href="#" class="issue-title">Demo</a>
                                 <span class="label" style="background-color: red;">Bug</span>
@@ -121,7 +123,9 @@
                     </li>
                     <li class="list-group-item">
                         <div class="issue-item row">
-                            <div class="issue-status"><i class="fa fa-exclamation-circle"></i></div>
+                            <div class="issue-status">
+                                <i class="fa fa-exclamation-circle"></i>
+                            </div>
                             <div class="issue-main">
                                 <a href="#" class="issue-title">Demo</a>
                                 <span class="label" style="background-color: #1392e9;">Mobile</span>

@@ -1,4 +1,5 @@
 <%@include file="../shared/header.jsp" %>
+<%@include file="../shared/sidebar.jsp" %>
 <div class="container-fluid">
     <div class="row">
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main table-responsive">
@@ -9,7 +10,11 @@
                     <a href="project?action=label"  class="btn btn-primary">Labels</a>
                     <a href="project?action=milestone"  class="btn btn-default">Milestones</a>
                 </div>
-            </div> 
+                <div class="col-sm-1 col-sm-offset-4">
+                    <button class="btn btn-success">New label</button>
+                </div>
+            </div>
+
 
             <div class="panel panel-default">
                 <!-- Default panel contents -->
