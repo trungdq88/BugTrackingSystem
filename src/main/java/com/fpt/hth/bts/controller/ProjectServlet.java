@@ -16,6 +16,7 @@ import java.util.Date;
  */
 @WebServlet(name = "ProjectServlet", urlPatterns = {"/project"})
 public class ProjectServlet extends HttpServlet {
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");
         if (action == null) {
@@ -57,6 +58,12 @@ public class ProjectServlet extends HttpServlet {
         }
         if (action.equals("create")) {
             request.getRequestDispatcher("WEB-INF/project/create.jsp").forward(request, response);
+        } else if (action.equals("view")) {
+            request.getRequestDispatcher("WEB-INF/project/detail-issue.jsp").forward(request, response);
+        } else if (action.equals("label")) {
+            request.getRequestDispatcher("WEB-INF/project/detail-label.jsp").forward(request, response);
+        } else if (action.equals("milestone")) {
+            request.getRequestDispatcher("WEB-INF/project/detail-milestone.jsp").forward(request, response);
         } else {
             request.getRequestDispatcher("WEB-INF/error/404.jsp").forward(request, response);
         }

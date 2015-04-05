@@ -25,6 +25,12 @@
 
     <!-- Custom styles for this template -->
     <link href="assets/css/dashboard.css" rel="stylesheet">
+    
+    <!-- Awesome icons -->
+    <link href="assets/css/font-awesome.min.css" rel="stylesheet">
+    
+        <!-- Custom styles -->
+    <link href="assets/css/style.css" rel="stylesheet">
 
     <script src="assets/js/ckeditor.js"></script>
 </head>
