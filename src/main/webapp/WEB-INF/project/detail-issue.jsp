@@ -23,7 +23,7 @@
                 </div>
 
                 <div class="col-sm-1">
-                    <button class="btn btn-success">New issue</button>
+                    <a href="${pageContext.request.contextPath}/issue?action=create" class="btn btn-success">New issue</a>
                 </div>
             </div> 
 

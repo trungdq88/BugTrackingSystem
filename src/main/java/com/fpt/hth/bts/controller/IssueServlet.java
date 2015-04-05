@@ -56,7 +56,9 @@ public class IssueServlet extends HttpServlet {
             response.sendRedirect("/");
             return;
         }
-        if (action.equals("view")) {
+        if (action.equals("create")) {
+            request.getRequestDispatcher("WEB-INF/issue/create.jsp").forward(request, response);
+        } else if (action.equals("view")) {
             String idStr = request.getParameter("id");
             int issueId = 0;
             if (idStr != null) {
