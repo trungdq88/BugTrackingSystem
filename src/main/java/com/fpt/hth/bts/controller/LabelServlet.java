@@ -32,27 +32,28 @@ public class LabelServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-
         String action = request.getParameter("action");
 
         if (action.equals("create")) {
-            String color = request.getParameter("color");
+            String colorBg = request.getParameter("color-bg");
+            String colorText = request.getParameter("color-text");
             String name = request.getParameter("name");
             String projectId = request.getParameter("projectId") == null ? "0" : request.getParameter("projectId");
             int project = Integer.parseInt(projectId);
             Label label = new Label();
-            label.setColor(color);
+            label.setColorBg(colorBg);
+            label.setColorText(colorText);
             label.setName(name);
             label.setProjectId(project);
 
             LabelDAO dao = new LabelDAO();
-            if (color == null || color.isEmpty() || name == null || name.isEmpty() || project == 0) {
-                request.setAttribute("message", "Error: project code is empty or duplicated!");
+            if (colorBg == null || colorBg.isEmpty() || name == null || name.isEmpty() || project == 0) {
+                request.setAttribute("message", "Error: label name is empty or duplicated!");
             } else {
                 Label result = dao.create(label);
                 if (result != null) {
-                    request.setAttribute("message", "Project created!");
+                    response.sendRedirect(request.getContextPath() + "/project?action=label&id=" + projectId);
+                    return;
                 } else {
                     request.setAttribute("message", "There is problem when create new project!");
                 }

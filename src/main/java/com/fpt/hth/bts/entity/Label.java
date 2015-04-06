@@ -29,7 +29,8 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Label.findAll", query = "SELECT l FROM Label l"),
     @NamedQuery(name = "Label.findById", query = "SELECT l FROM Label l WHERE l.id = :id"),
     @NamedQuery(name = "Label.findByName", query = "SELECT l FROM Label l WHERE l.name = :name"),
-    @NamedQuery(name = "Label.findByColor", query = "SELECT l FROM Label l WHERE l.color = :color"),
+    @NamedQuery(name = "Label.findByColorBg", query = "SELECT l FROM Label l WHERE l.colorBg = :colorBg"),
+    @NamedQuery(name = "Label.findByColorText", query = "SELECT l FROM Label l WHERE l.colorText = :colorText"),
     @NamedQuery(name = "Label.findByProjectId", query = "SELECT l FROM Label l WHERE l.projectId = :projectId")})
 public class Label implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -42,8 +43,11 @@ public class Label implements Serializable {
     @Column(name = "name")
     private String name;
     @Size(max = 255)
-    @Column(name = "color")
-    private String color;
+    @Column(name = "color_bg")
+    private String colorBg;
+    @Size(max = 255)
+    @Column(name = "color_text")
+    private String colorText;
     @Column(name = "project_id")
     private Integer projectId;
 
@@ -70,12 +74,20 @@ public class Label implements Serializable {
         this.name = name;
     }
 
-    public String getColor() {
-        return color;
+    public String getColorBg() {
+        return colorBg;
     }
 
-    public void setColor(String color) {
-        this.color = color;
+    public void setColorBg(String colorBg) {
+        this.colorBg = colorBg;
+    }
+
+    public String getColorText() {
+        return colorText;
+    }
+
+    public void setColorText(String colorText) {
+        this.colorText = colorText;
     }
 
     public Integer getProjectId() {

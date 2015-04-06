@@ -1,6 +1,7 @@
 package com.fpt.hth.bts.controller;
 
 import com.fpt.hth.bts.dao.IssueDAO;
+import com.fpt.hth.bts.dao.LabelDAO;
 import com.fpt.hth.bts.dao.ProjectDAO;
 import com.fpt.hth.bts.entity.Project;
 
@@ -94,6 +95,11 @@ public class ProjectServlet extends HttpServlet {
 
             request.getRequestDispatcher("WEB-INF/project/detail-issue.jsp").forward(request, response);
         } else if (action.equals("label")) {
+            LabelDAO labelDAO = new LabelDAO();
+
+            List labels = labelDAO.getAllByProject(projectId);
+            request.setAttribute("labels", labels);
+
             request.getRequestDispatcher("WEB-INF/project/detail-label.jsp").forward(request, response);
         } else if (action.equals("milestone")) {
             request.getRequestDispatcher("WEB-INF/project/detail-milestone.jsp").forward(request, response);
