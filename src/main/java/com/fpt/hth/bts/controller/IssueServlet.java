@@ -33,19 +33,26 @@ public class IssueServlet extends HttpServlet {
                 response.sendRedirect(request.getContextPath() + "/issue?action=view&id=" + issueId);
                 return;
             }
+            UserDAO userDAO = new UserDAO();
+            CommentDAO commentDAO = new CommentDAO();
+            IssueDAO issueDAO = new IssueDAO();
 
             Comment comment = new Comment();
             comment.setCommentContent(commentStr);
             comment.setCreatedDate(new Date());
             comment.setIssueId(issueId);
 
-            UserDAO userDAO = new UserDAO();
             User loggedUser = userDAO.read(DummyVal.loggedInUserId);
             comment.setUserId(loggedUser.getId());
             comment.setUsername(loggedUser.getUsername());
 
-            CommentDAO commentDAO = new CommentDAO();
             commentDAO.create(comment);
+
+            // Update cache field
+            Issue issue = issueDAO.read(issueId);
+            issue.setCommentCount(issueDAO.getCommentCount(issueId));
+            issueDAO.update(issue);
+
             response.sendRedirect(request.getContextPath() + "/issue?action=view&id=" + issueId);
         } else if (action.equals("create")) {
             String name = request.getParameter("issue-name");
@@ -120,7 +127,6 @@ public class IssueServlet extends HttpServlet {
                 if (issue.getMilestoneId() != null && issue.getMilestoneId() > 0) {
                     milestone = milestoneDAO.read(issue.getMilestoneId());
                 }
-
 
                 // Get assignee
                 Assignment assignment = assignmentDAO.getLatestAssignment(issueId);

@@ -39,6 +39,8 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Issue.findByProjectId", query = "SELECT i FROM Issue i WHERE i.projectId = :projectId"),
     @NamedQuery(name = "Issue.findByMilestoneId", query = "SELECT i FROM Issue i WHERE i.milestoneId = :milestoneId")})
 public class Issue implements Serializable {
+    @Column(name = "comment_count")
+    private Integer commentCount;
     @Size(max = 45)
     @Column(name = "username")
     private String username;
@@ -169,6 +171,14 @@ public class Issue implements Serializable {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public Integer getCommentCount() {
+        return commentCount;
+    }
+
+    public void setCommentCount(Integer commentCount) {
+        this.commentCount = commentCount;
     }
     
 }

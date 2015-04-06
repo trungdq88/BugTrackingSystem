@@ -27,4 +27,11 @@ public class IssueDAO extends GenericDaoJpaImpl<Issue, Integer>{
         query.setParameter("status", status);
         return query.getResultList();
     }
+
+    public int getCommentCount(int issueId) {
+        EntityManager manager = factory.createEntityManager();
+        Query query = manager.createQuery("SELECT c FROM Comment c WHERE c.issueId = :issueId");
+        query.setParameter("issueId", issueId);
+        return query.getResultList().size();
+    }
 }

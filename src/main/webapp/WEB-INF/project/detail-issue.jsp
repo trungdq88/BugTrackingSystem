@@ -105,7 +105,8 @@
                         <div class="issue-item row">
                             <div class="issue-status status-${param.status}">#${issue.id}</div>
                             <div class="issue-main">
-                                <a href="${pageContext.request.contextPath}/issue?action=view&id=${issue.id}" class="issue-title">${issue.name}</a>
+                                <a href="${pageContext.request.contextPath}/issue?action=view&id=${issue.id}"
+                                   class="issue-title">${issue.name}</a>
                                 <span class="label" style="background-color: red;">Bug</span>
                                 <div>
                                     <span name="opened-by">opened on
@@ -116,9 +117,9 @@
                                 </div>
                             </div>
                             <div class="issue-comment">
-                                <a href="#">
+                                <a href="${pageContext.request.contextPath}/issue?action=view&id=${issue.id}">
                                     <i class="fa fa-comment"></i>
-                                    3
+                                    ${issue.commentCount}
                                 </a>
                             </div>
                         </div>
