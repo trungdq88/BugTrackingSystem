@@ -4,9 +4,17 @@
         <servlet-name>LabelServlet</servlet-name>
         <servlet-class>com.fpt.hth.bts.controller.LabelServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>MilestoneServlet</servlet-name>
+        <servlet-class>com.fpt.hth.bts.controller.MilestoneServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LabelServlet</servlet-name>
         <url-pattern>/label</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>MilestoneServlet</servlet-name>
+        <url-pattern>/milestone</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
