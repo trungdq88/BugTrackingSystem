@@ -105,13 +105,13 @@
                         <div class="issue-item row">
                             <div class="issue-status status-${param.status}">#${issue.id}</div>
                             <div class="issue-main">
-                                <a href="#" class="issue-title">${issue.name}</a>
+                                <a href="${pageContext.request.contextPath}/issue?action=view&id=${issue.id}" class="issue-title">${issue.name}</a>
                                 <span class="label" style="background-color: red;">Bug</span>
                                 <div>
                                     <span name="opened-by">opened on
-                                        <span><fmt:formatDate  type="both" dateStyle="medium" timeStyle="medium"
+                                        <fmt:formatDate type="both" dateStyle="medium" timeStyle="medium"
                                                                value="${issue.createDate}" /></span>
-                                        by ${issue.username} </span>
+                                        by ${issue.username}
                                     <span name="issue-milestone"></span>
                                 </div>
                             </div>
