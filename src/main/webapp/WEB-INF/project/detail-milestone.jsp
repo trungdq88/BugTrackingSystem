@@ -8,6 +8,9 @@
             <br/>
             <div class="row" style="margin-bottom: 20px;">
                 <%@include file="shared/menu.jsp"%>
+                <div class="col-sm-6 text-right">
+                    <button class="btn btn-success">New milestone</button>
+                </div>
             </div>
 
             <div class="panel panel-default">
@@ -45,8 +48,8 @@
                             <div class="col-sm-6">
                                 <a href="#" class="issue-title">Demo</a>
                                 <div>
-                                        <strong>Closed</strong>
-                                        14 hours ago
+                                    <strong>Closed</strong>
+                                    14 hours ago
                                     <span>
                                         <i class="fa fa-clock-o"></i> 
                                         last updated about 14 hours ago
@@ -80,8 +83,8 @@
                             <div class="col-sm-6">
                                 <a href="#" class="issue-title">Demo</a>
                                 <div>
-                                        <strong>Closed</strong>
-                                        14 hours ago
+                                    <strong>Closed</strong>
+                                    14 hours ago
                                     <span>
                                         <i class="fa fa-clock-o"></i> 
                                         last updated about 14 hours ago

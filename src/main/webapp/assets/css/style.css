@@ -96,3 +96,10 @@ and open the template in the editor.
 .selected {
     font-weight: bold;
 }
+
+#demo-color {
+    border: 0px;
+    height: 35px;
+    margin-left: 10px;
+    border-radius: 3px;
+}
