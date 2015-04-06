@@ -11,9 +11,12 @@
                 </div>
             </div>
             <div id="create-label" class="hidden">
-                <form>
-                    <input type="text" placeholder="New label name..." class="col-sm-5 input-text"/>
-                    <input type="text" class="col-sm-1 input-text"/>
+                <form action="label">
+                    <input type="text" name="name" placeholder="New label name..." class="col-sm-5 input-text"/>
+                    <button id="demo-color" type="button">Your Label</button>
+                    <input id="label-color" type="hidden" value="" name="color"/>
+                    <input type="hidden" value="7" name="projectId"/>
+                    <input type="hidden" name="action" value="create" />
                     <div class="col-sm-3" style="float: right;">
                         <button type="button" onclick="toggleCreateLabel()" class="btn btn-default">Cancel</button>
                         <button type="submit" class="btn btn-success">Create label</button>

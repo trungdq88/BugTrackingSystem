@@ -86,3 +86,10 @@ and open the template in the editor.
     border: 1px solid #E5E5E5;
     margin-bottom: 20px;
 }
+
+#demo-color {
+    border: 0px;
+    height: 35px;
+    margin-left: 10px;
+    border-radius: 3px;
+}

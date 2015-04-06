@@ -11,9 +11,9 @@ function toggleCreateLabel() {
     }else{
         $("#create-label").addClass("hidden");
     }
-    
+    var color = generateLabel();
+    var value = color.bg + "|" + color.text;
+    $("#demo-color").attr("style", "background-color: "+color.bg+";"+"color:"+color.text);
+    $("#label-color").val(value);
 }
 
-//$(document).ready(function(){
-//    $("#create-label").hide();
-//});
