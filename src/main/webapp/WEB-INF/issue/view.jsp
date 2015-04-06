@@ -6,6 +6,8 @@
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2">
     <div class=" col-md-12">
         <h1 class="page-header">
+            <a href="${pageContext.request.contextPath}/project?action=view&id=${requestScope.issue.projectId}"
+               class="text-muted pull-right font-small">Back to project</a>
             ${requestScope.issue.name} <small>#${requestScope.issue.id}</small>
         </h1>
         <p>

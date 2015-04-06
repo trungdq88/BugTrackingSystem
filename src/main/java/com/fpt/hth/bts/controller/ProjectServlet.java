@@ -1,5 +1,6 @@
 package com.fpt.hth.bts.controller;
 
+import com.fpt.hth.bts.dao.IssueDAO;
 import com.fpt.hth.bts.dao.ProjectDAO;
 import com.fpt.hth.bts.entity.Project;
 
@@ -10,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by dinhquangtrung on 4/5/15.
@@ -56,9 +58,40 @@ public class ProjectServlet extends HttpServlet {
             response.sendRedirect("/");
             return;
         }
+
+        ProjectDAO projectDAO = null;
+        int projectId = 0;
+        Project project = null;
+        if (action.equals("view")
+                || action.equals("label")
+                || action.equals("milestone")
+                || action.equals("member")) {
+            projectDAO = new ProjectDAO();
+            projectId = Integer.parseInt(request.getParameter("id"));
+            project = projectDAO.read(projectId);
+            request.setAttribute("project", project);
+        }
         if (action.equals("create")) {
             request.getRequestDispatcher("WEB-INF/project/create.jsp").forward(request, response);
         } else if (action.equals("view")) {
+
+            String status = request.getParameter("status");
+            if (status == null || status.isEmpty()) {
+                status = "open";
+            }
+
+            IssueDAO issueDAO = new IssueDAO();
+
+            List issues = issueDAO.getAllByProject(projectId, status.equals("open"));
+
+            assert projectDAO != null;
+            int openCount = projectDAO.getIssueCount(projectId, true);
+            int closeCount = projectDAO.getIssueCount(projectId, false);
+
+            request.setAttribute("issues", issues);
+            request.setAttribute("openCount", openCount);
+            request.setAttribute("closeCount", closeCount);
+
             request.getRequestDispatcher("WEB-INF/project/detail-issue.jsp").forward(request, response);
         } else if (action.equals("label")) {
             request.getRequestDispatcher("WEB-INF/project/detail-label.jsp").forward(request, response);

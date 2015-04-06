@@ -41,6 +41,9 @@ and open the template in the editor.
     padding: 0 7px;
     margin: 4px 7px;
 }
+.issue-status.status-close {
+    background-color: rgb(184, 50, 38);
+}
 
 .issue-main {
     width: 90%;
@@ -85,4 +88,11 @@ and open the template in the editor.
     background-color: #f5f5f5;
     border: 1px solid #E5E5E5;
     margin-bottom: 20px;
+}
+
+.font-small {
+    font-size: 14px;
+}
+.selected {
+    font-weight: bold;
 }

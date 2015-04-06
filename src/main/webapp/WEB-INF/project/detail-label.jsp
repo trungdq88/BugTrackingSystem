@@ -2,7 +2,9 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main table-responsive">
-            <h1 class="page-header">Demo</h1>
+            <h1 class="page-header">${requestScope.project.name}</h1>
+            <p class="text-muted">${requestScope.project.description}</p>
+            <br/>
             <div class="row" style="margin-bottom: 20px;">
                 <%@include file="shared/menu.jsp"%>
 

@@ -39,6 +39,9 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Issue.findByProjectId", query = "SELECT i FROM Issue i WHERE i.projectId = :projectId"),
     @NamedQuery(name = "Issue.findByMilestoneId", query = "SELECT i FROM Issue i WHERE i.milestoneId = :milestoneId")})
 public class Issue implements Serializable {
+    @Size(max = 45)
+    @Column(name = "username")
+    private String username;
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -158,6 +161,14 @@ public class Issue implements Serializable {
     @Override
     public String toString() {
         return "com.fpt.hth.bts.entity.Issue[ id=" + id + " ]";
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
     
 }

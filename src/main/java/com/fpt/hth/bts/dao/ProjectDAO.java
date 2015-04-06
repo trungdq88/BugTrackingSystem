@@ -23,4 +23,14 @@ public class ProjectDAO extends GenericDaoJpaImpl<Project, Integer> {
         query.setParameter("code", code);
         return query.getResultList().size() > 0;
     }
+
+    public int getIssueCount(int projectId, boolean openOnly) {
+        int status = openOnly ? 0 : 1;
+        EntityManager manager = factory.createEntityManager();
+        Query query = manager.createQuery("SELECT i FROM Issue i " +
+                "WHERE i.projectId = :projectId AND i.status = :status");
+        query.setParameter("projectId", projectId);
+        query.setParameter("status", status);
+        return query.getResultList().size();
+    }
 }

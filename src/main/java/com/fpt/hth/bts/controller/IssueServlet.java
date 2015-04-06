@@ -57,13 +57,17 @@ public class IssueServlet extends HttpServlet {
                 return;
             }
 
+            UserDAO userDAO = new UserDAO();
+            User user = userDAO.read(DummyVal.loggedInUserId);
+
             Issue issue = new Issue();
             issue.setStatus(BTSConstants.ISSUE_OPEN_STATUS);
             issue.setContent(description);
             issue.setName(name);
             issue.setCreateDate(new Date());
             issue.setProjectId(projectId);
-            issue.setCreatorId(DummyVal.loggedInUserId);
+            issue.setCreatorId(user.getId());
+            issue.setUsername(user.getUsername());
 
             // DAOs
             IssueDAO issueDAO = new IssueDAO();
