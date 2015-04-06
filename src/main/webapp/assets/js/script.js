@@ -6,15 +6,23 @@
 
 function toggleCreateLabel() {
     var obj = $("#create-label");
-    if(obj.hasClass("hidden")){
+    if (obj.hasClass("hidden")) {
         $("#create-label").removeClass("hidden");
-    }else{
+    } else {
         $("#create-label").addClass("hidden");
     }
     var color = generateLabel();
     $("#demo-color").attr("style", "background-color: "+color.bg+";"+"color:"+color.text);
     $("#label-color-bg").val(color.bg);
     $("#label-color-text").val(color.text);
+}
+function toggleCreateMilestone() {
+    var obj = $("#create-milstone");
+    if (obj.hasClass("hidden")) {
+        $("#create-milstone").removeClass("hidden");
+    } else {
+        $("#create-milstone").addClass("hidden");
+    }
 }
 
 $(function () {

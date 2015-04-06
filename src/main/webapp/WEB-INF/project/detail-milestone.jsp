@@ -9,8 +9,31 @@
             <div class="row" style="margin-bottom: 20px;">
                 <%@include file="shared/menu.jsp"%>
                 <div class="col-sm-6 text-right">
-                    <button class="btn btn-success">New milestone</button>
-                </div>
+                    <button onclick="toggleCreateMilestone()" class="btn btn-success">New milestone</button>
+                </div>              
+            </div>
+            <div id="create-milstone" class="hidden">
+                <form action="milestone" method="Post">
+                    <div>
+                        <label>Name</label><br>
+                        <input type="text" name="name" placeholder="New milestone name..."/>
+                    </div>
+                    <div>
+                        <label>Description</label><br>
+                        <textarea rows="5" placeholder="Description" name="description"></textarea><br>
+                    </div>
+                    <div>
+                        <label>Deadline</label><br>
+                        <input type="text" style="width: 20%" name="date" placeholder="Dealine"/>
+                    </div>                  
+                    <input type="hidden" value="7" name="projectId"/>
+                    <input type="hidden" name="action" value="create" />
+                    <div class="col-sm-3" style="float: right;">
+                        <button type="button" onclick="toggleCreateMilestone()" class="btn btn-default">Cancel</button>
+                        <button type="submit" class="btn btn-success">Create milestone</button>
+                    </div>
+                    <div style="clear: both;"></div>
+                </form>
             </div>
 
             <div class="panel panel-default">
