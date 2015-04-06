@@ -26,7 +26,7 @@
 
             <c:choose>
                 <c:when test="${requestScope.issue.status == 0}">
-                    <a href="${pageContext.request.contextPath}/issue?action=close&id=${requestScope.issue.id}" class="btn btn-primary">
+                    <a href="${pageContext.request.contextPath}/issue?action=close&id=${requestScope.issue.id}&projectId=${requestScope.issue.projectId}" class="btn btn-primary">
                         Close issue
                     </a>
                 </c:when>

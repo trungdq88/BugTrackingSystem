@@ -47,6 +47,28 @@ public class IssueServlet extends HttpServlet {
             CommentDAO commentDAO = new CommentDAO();
             commentDAO.create(comment);
             response.sendRedirect(request.getContextPath() + "/issue?action=view&id=" + issueId);
+        } else if (action.equals("create")) {
+            String name = request.getParameter("issue-name");
+            String description = request.getParameter("issue-description");
+            int projectId = Integer.parseInt(request.getParameter("project-id"));
+
+            if (description == null || description.isEmpty()) {
+                response.sendRedirect(request.getContextPath() + "/issue?action=create");
+                return;
+            }
+
+            Issue issue = new Issue();
+            issue.setStatus(BTSConstants.ISSUE_OPEN_STATUS);
+            issue.setContent(description);
+            issue.setName(name);
+            issue.setCreateDate(new Date());
+            issue.setProjectId(projectId);
+            issue.setCreatorId(DummyVal.loggedInUserId);
+
+            // DAOs
+            IssueDAO issueDAO = new IssueDAO();
+            issue = issueDAO.create(issue);
+            response.sendRedirect(request.getContextPath() + "/issue?action=view&id=" + issue.getId());
         }
     }
 
@@ -91,7 +113,7 @@ public class IssueServlet extends HttpServlet {
 
                 // Get milestone
                 Milestone milestone = null;
-                if (issue.getMilestoneId() > 0) {
+                if (issue.getMilestoneId() != null && issue.getMilestoneId() > 0) {
                     milestone = milestoneDAO.read(issue.getMilestoneId());
                 }
 

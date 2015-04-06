@@ -4,7 +4,7 @@
     <div class="row">
         <h1 class="page-header col-md-10 col-md-offset-2 main"
             style="margin-top: 10px; margin-bottom: 0">Create new issue</h1>
-        <form action="" method="post">
+        <form action="${pageContext.request.contextPath}/issue" method="post">
             <div class="col-md-7 col-md-offset-2 main table-responsive">
                 <table style="width: 100%">
                     <tr>
@@ -26,6 +26,7 @@
                 <br/>
                 <br/>
                 <input type="hidden" name="action" value="create"/>
+                <input type="hidden" name="project-id" value="${param.projectId}"/>
                 <input type="submit" class="btn btn-primary" value="Create issue"/>
             </div>
             <div class="col-md-3">
